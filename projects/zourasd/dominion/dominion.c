@@ -677,6 +677,9 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
     case great_hall:
 	playGreatHall(state, handPos, currentPlayer);
 
+    case steward:
+        playSteward(state, handPos, currentPlayer, choice1, choice2, choice3);
+
     case council_room:
       //+4 Cards
       for (i = 0; i < 4; i++)
@@ -918,29 +921,6 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	    }
 
 	}
-      return 0;
-
-    case steward:
-      if (choice1 == 1)
-	{
-	  //+2 cards
-	  drawCard(currentPlayer, state);
-	  drawCard(currentPlayer, state);
-	}
-      else if (choice1 == 2)
-	{
-	  //+2 coins
-	  state->coins = state->coins + 2;
-	}
-      else
-	{
-	  //trash 2 cards in hand
-	  discardCard(choice2, currentPlayer, state, 1);
-	  discardCard(choice3, currentPlayer, state, 1);
-	}
-
-      //discard card from hand
-      discardCard(handPos, currentPlayer, state, 0);
       return 0;
 
     case tribute:
@@ -1346,6 +1326,30 @@ int playGreatHall(struct gameState *state, int handPos, int currentPlayer){
     //discard card from hand
     discardCard(handPos, currentPlayer, state, 0);
     return 0;
+}
+
+int playSteward(struct gameState *state, int handPos, int currentPlayer, int choice1, int choice2, int choice3) {
+      if (choice1 == 1)
+	{
+	  //+2 cards
+	  drawCard(currentPlayer, state);
+	  drawCard(currentPlayer, state);
+	}
+      else if (choice1 == 2)
+	{
+	  //+2 coins
+	  state->coins = state->coins + 2;
+	}
+      else
+	{
+	  //trash 2 cards in hand
+	  discardCard(choice2, currentPlayer, state, 1);
+	  discardCard(choice3, currentPlayer, state, 1);
+	}
+
+      //discard card from hand
+      discardCard(handPos, currentPlayer, state, 0);
+      return 0;
 }
 
 

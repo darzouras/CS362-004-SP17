@@ -8,7 +8,7 @@
 #define DEBUG 0
 #define NOISY_TEST 1
 
-int checkDrawCard(int p, struct gameState *post) {
+void checkDrawCard(int p, struct gameState *post) {
   struct gameState pre;
   memcpy (&pre, post, sizeof(struct gameState));
 

@@ -17,9 +17,18 @@ int main() {
     printf("Cost of Estate (1) is correct\n");
 
     assert(getCost(2) == 5);
-    printf("Cost of the Dutchy(2) is correct\n");
+    printf("Cost of Dutchy (2) is correct\n");
+
+    assert(getCost(3) == 8);
+    printf("Cost of Province (3) is correct\n");
+
+    assert(getCost(4) == 0);
+    printf("Cost of Copper (4) is correct\n");
+
+    assert(getCost(5) == 3);
+    printf("Cost of Silver (5) is correct\n");
 
     printf("All tests passed!\n");
 
-    return;
+    return 0;
 }

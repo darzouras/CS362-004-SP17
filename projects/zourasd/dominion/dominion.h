@@ -136,4 +136,6 @@ int playVillage(struct gameState *state, int handPos, int currentPlayer);
 int playGreatHall(struct gameState *state, int handPos, int currentPlayer);
 int playSteward(struct gameState *state, int handPos, int currentPlayer, int choice1, int choice2, int choice3);
 
+int getCost(int cardNumber);
+
 #endif

@@ -28,7 +28,7 @@ int main() {
     assert(getCost(5) == 3);
     printf("Cost of Silver (5) is correct\n");
 
-    printf("All tests passed!\n");
+    printf("All tests passed!\n\n");
 
     return 0;
 }

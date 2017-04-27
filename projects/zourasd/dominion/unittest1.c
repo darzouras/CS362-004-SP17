@@ -39,12 +39,10 @@ int main() {
 
         // attempt two buys for each player
         G.numBuys = 2;
-
-        // first, test situation where a buy can happen.
-        // if returns 0, check the current player's hand for the card
-        // check that the supply count has been decreased
+        printf("G.coins = %d\n", G.coins);
 
         // the first buy attempts to buy a council_room, which will cost all 5 coppers in hand
+        preSupply = G.supplyCount[1];
         testReturn = buyCard(1, &G);
         if (testReturn == -1)
             printf("buyCard(): FAIL expected function to return 0\n");
@@ -56,6 +54,12 @@ int main() {
                 printf("buyCard(): PASS numBuys decremented after buy\n");
             else
                 printf("buyCard(): FAIL numBuys did not decrement\n");
+
+            // test that the supply has been decremented
+            if (G.supplyCount[1] == preSupply-1)
+                printf("buyCard(): PASS card has been removed from supply pile\n");
+            else
+                printf("buyCard(): FAIL supplyCount has not been decremented\n");
 
             // test that payment has been taken
             if (G.coins == 0)

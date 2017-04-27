@@ -1,5 +1,6 @@
 // unit testing the function buyCard (line 272)
 #include "dominion.h"
+#include "dominion_helpers.h"
 #include "rngs.h"
 #include <string.h>
 #include <stdio.h>
@@ -12,7 +13,7 @@ int main() {
     printf("####################\n");
     printf("Unit test 1 - buyCard()\n");
 
-    int i, p, testReturn;
+    int i, p, r, testReturn;
     int seed = 999;
     int numPlayer = 2;
     int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
@@ -45,7 +46,7 @@ int main() {
 
         // the first buy attempts to buy a council_room, which will cost all 5 coppers in hand
         testReturn = buyCard(1, &G);
-        if (testReturn = -1)
+        if (testReturn == -1)
             printf("buyCard(): FAIL expected function to return 0\n");
         else {
             printf("buyCard(): PASS function exited without error\n");

@@ -11,32 +11,32 @@ int main() {
     printf("Unit test 3 - getCost()\n");
     // to test these, we will simply pass any out of the 27 card types
     // and compare the results of the getCost function
-    if(getCost(0) == 0);
+    if(getCost(0) == 0)
         printf("getCost(): PASS cost of Curse is correct\n");
     else
         printf("getCost(): FAIL cost of Curse is incorrect\n");
 
-    if(getCost(1) == 2);
+    if(getCost(1) == 2)
         printf("getCost(): PASS cost of Estate is correct\n");
     else
         printf("getCost(): FAIL cost of Estate is incorrect\n");
 
-    if(getCost(2) == 5);
+    if(getCost(2) == 5)
         printf("getCost(): PASS cost of Dutchy is correct\n");
     else
         printf("getCost(): FAIL cost of Dutchy is incorrect\n");
 
-    if(getCost(3) == 8);
+    if(getCost(3) == 8)
         printf("getCost(): PASS cost of Province is correct\n");
     else
         printf("getCost(): FAIL cost of Province is incorrect\n");
 
-    if(getCost(4) == 0);
+    if(getCost(4) == 0)
         printf("getCost(): PASS cost of Copper is correct\n");
     else
         printf("getCost(): FAIL cost of Copper is incorrect\n");
 
-    if(getCost(5) == 3);
+    if(getCost(5) == 3)
         printf("getCost(): PASS cost of Silver is correct\n");
     else
         printf("getCost(): FAIL cost of Silver is incorrect\n");

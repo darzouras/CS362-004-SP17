@@ -7,28 +7,41 @@
 // getCost takes one parameter: int cardNumber
 // it uses a switch to match the card with its cost, which is returned.
 int main() {
-    printf("Unit test - getCost\n");
+    printf("####################\n");
+    printf("Unit test 3 - getCost()\n");
     // to test these, we will simply pass any out of the 27 card types
     // and compare the results of the getCost function
-    assert(getCost(0) == 0);
-    printf("Cost of Curse (0) is correct\n");
+    if(getCost(0) == 0);
+        printf("getCost(): PASS cost of Curse is correct\n");
+    else
+        printf("getCost(): FAIL cost of Curse is incorrect\n");
 
-    assert(getCost(1) == 2);
-    printf("Cost of Estate (1) is correct\n");
+    if(getCost(1) == 2);
+        printf("getCost(): PASS cost of Estate is correct\n");
+    else
+        printf("getCost(): FAIL cost of Estate is incorrect\n");
 
-    assert(getCost(2) == 5);
-    printf("Cost of Dutchy (2) is correct\n");
+    if(getCost(2) == 5);
+        printf("getCost(): PASS cost of Dutchy is correct\n");
+    else
+        printf("getCost(): FAIL cost of Dutchy is incorrect\n");
 
-    assert(getCost(3) == 8);
-    printf("Cost of Province (3) is correct\n");
+    if(getCost(3) == 8);
+        printf("getCost(): PASS cost of Province is correct\n");
+    else
+        printf("getCost(): FAIL cost of Province is incorrect\n");
 
-    assert(getCost(4) == 0);
-    printf("Cost of Copper (4) is correct\n");
+    if(getCost(4) == 0);
+        printf("getCost(): PASS cost of Copper is correct\n");
+    else
+        printf("getCost(): FAIL cost of Copper is incorrect\n");
 
-    assert(getCost(5) == 3);
-    printf("Cost of Silver (5) is correct\n");
+    if(getCost(5) == 3);
+        printf("getCost(): PASS cost of Silver is correct\n");
+    else
+        printf("getCost(): FAIL cost of Silver is incorrect\n");
 
-    printf("All tests passed!\n\n");
+    // if time to do it, add tests for each card.
 
     return 0;
 }

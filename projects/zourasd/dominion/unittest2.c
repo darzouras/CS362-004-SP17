@@ -4,8 +4,19 @@
 #include <stdlib.h>
 #include <assert.h>
 
-// scoreFor requires two parameters: int player, and struct gameState *state
+// int scoreFor (int player, struct gameState *state)
+// returns the point total from a player's hand, deck, and discard pile
 int main() {
-    int p = 1;          // set player number to 1    
-    // the function returns the score, which should match the score that we have calculated based on what we have set in the gameState
+    printf("####################\n");
+    printf("Unit test 2 - scoreFor()\n");
+
+    // for each player in the game...
+    
+    // assign point values manually,
+    // include each of the types of cards in each pile
+    // save variables that hold the expected point value
+    // if they are the same, pass
+    // if they are not the same, fail
+
+    return 0;
 }

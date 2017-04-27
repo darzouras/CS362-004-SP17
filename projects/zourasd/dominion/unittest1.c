@@ -47,6 +47,7 @@ int main() {
         printf("G.coins = %d\n", G.coins);
 
         // the first buy attempts to buy a council_room, which will cost all 5 coppers in hand
+        printf("--Testing successful buy\n");
         int preSupply = G.supplyCount[1];
         testReturn = buyCard(1, &G);
         if (testReturn == -1)
@@ -72,8 +73,8 @@ int main() {
             else
                 printf("buyCard(): FAIL currency was not removed from hand\n");
 
-            if (G.handCount[p] >= 6) {
-            if (G.hand[p][5] == 8)
+            if (G.handCount[p] == 6) {
+            if (G.hand[p][5] == k[1])
                 printf("buyCard(): PASS the correct card is found in hand\n");
             else
                 printf("buyCard(): FAIL incorrect card added to hand\n");
@@ -83,19 +84,32 @@ int main() {
         }
 
         // the second buy attempts to buy a council_room again, but not enough coin in hand
-            // test if state->coins < getCost(supplyPos)
-            // if returns -1, pass
-            // if returns 0, fail
+        printf("--Testing unsuccessful buy (not enough coins)\n");
+        G.coins = 0;
+        testReturn = buyCard(1, &G);
+        if (testReturn == -1)
+            printf("buyCard(): PASS -1 return value\n");
+        else
+            printf("buyCard(): FAIL unexpected 0 return value\n");
+
+        // another unsuccessful buy- no supply to purchase from
+        G.supplyCount[1] = 0;
+        G.coins = 5;
+        testReturn = buyCard(1, &G);
+        if (testReturn == -1)
+            printf("buyCard(): PASS -1 return value\n");
+        else
+            printf("buyCard(): FAIL unexpected 0 return value\n");
 
         // and then test for b = 0
-        // if returns -1, pass
-        // if returns 0, fail
+        printf("--Testing unsuccessful buy (no available buy step)\n");
+        G.numBuys = 0;
+        testReturn = buyCard(1, &G);
+        if (testReturn == -1)
+            printf("buyCard(): PASS -1 return value\n");
+        else
+            printf("buyCard(): FAIL unexpected 0 return value\n");
     }
-
-
-    // test if supplyCount(supplyPos, state) = 0
-    // if returns -1, pass
-    // if returns 0, fail
 
     return 0;
 }

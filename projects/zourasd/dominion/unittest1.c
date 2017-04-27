@@ -20,8 +20,12 @@ int main() {
     struct gameState G;
     int handCount = 5;
     int coppers[MAX_HAND];
+    int silvers[MAX_HAND];
+    int golds[MAX_HAND];
     for (i = 0; i < MAX_HAND; i++) {
         coppers[i] = copper;
+        silvers[i] = silver;
+	golds[i] = gold;
     }
 
     // FIXME if time, create loop t hrough each possible supplyPos
@@ -39,10 +43,11 @@ int main() {
 
         // attempt two buys for each player
         G.numBuys = 2;
+	updateCoins(p, &G, 0);
         printf("G.coins = %d\n", G.coins);
 
         // the first buy attempts to buy a council_room, which will cost all 5 coppers in hand
-        preSupply = G.supplyCount[1];
+        int preSupply = G.supplyCount[1];
         testReturn = buyCard(1, &G);
         if (testReturn == -1)
             printf("buyCard(): FAIL expected function to return 0\n");
@@ -67,8 +72,8 @@ int main() {
             else
                 printf("buyCard(): FAIL currency was not removed from hand\n");
 
-            if (G.handCount[p] > 0) {
-            if (G.hand[p][0] == k[1])
+            if (G.handCount[p] >= 6) {
+            if (G.hand[p][5] == 8)
                 printf("buyCard(): PASS the correct card is found in hand\n");
             else
                 printf("buyCard(): FAIL incorrect card added to hand\n");

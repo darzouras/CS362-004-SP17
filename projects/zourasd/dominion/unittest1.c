@@ -1,6 +1,7 @@
 // unit testing the function buyCard (line 272)
 #include "dominion.h"
 #include "rngs.h"
+#include <string.h>
 #include <stdio.h>
 #include <assert.h>
 
@@ -11,7 +12,7 @@ int main() {
     printf("####################\n");
     printf("Unit test 1 - buyCard()\n");
 
-    int i, p, r, testReturn;
+    int i, p, testReturn;
     int seed = 999;
     int numPlayer = 2;
     int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
@@ -32,11 +33,11 @@ int main() {
         r = initializeGame(numPlayer, k, seed, &G);
         G.handCount[p] = handCount;
         memcpy(G.hand[p], coppers, sizeof(int) * handCount);
-        G->whoseTurn = p; // FIXME do I need this?????
+        G.whoseTurn = p; // FIXME do I need this?????
         // there are 5 coppers in hand to start
 
         // attempt two buys for each player
-        G->numBuys = 2;
+        G.numBuys = 2;
 
         // first, test situation where a buy can happen.
         // if returns 0, check the current player's hand for the card
@@ -50,19 +51,19 @@ int main() {
             printf("buyCard(): PASS function exited without error\n");
 
             // test numBuys decrement
-            if (G->numBuys == 1)
+            if (G.numBuys == 1)
                 printf("buyCard(): PASS numBuys decremented after buy\n");
             else
                 printf("buyCard(): FAIL numBuys did not decrement\n");
 
             // test that payment has been taken
-            if (G->coins == 0)
+            if (G.coins == 0)
                 printf("buyCard(): PASS currency was removed from hand\n");
             else
                 printf("buyCard(): FAIL currency was not removed from hand\n");
 
-            if (G->handCount[p] > 0) {
-            if (G->hand[p][0] == k[1])
+            if (G.handCount[p] > 0) {
+            if (G.hand[p][0] == k[1])
                 printf("buyCard(): PASS the correct card is found in hand\n");
             else
                 printf("buyCard(): FAIL incorrect card added to hand\n");

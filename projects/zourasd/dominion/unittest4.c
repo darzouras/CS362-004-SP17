@@ -1,8 +1,10 @@
 // unit testing the function isGameOver (line 390)
 #include "dominion.h"
+#include "rngs.h"
+#include "dominion_helpers.h"
 #include <stdio.h>
-#include <stdlib.h>
 #include <assert.h>
+#include <stdlib.h>
 
 // int isGameOver(struct gameState *state)
 // returns 0 if the game is not over

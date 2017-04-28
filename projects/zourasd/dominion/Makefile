@@ -24,8 +24,8 @@ unittest2: unittest2.c dominion.o rngs.o
 unittest3: unittest3.c dominion.o rngs.o
 	gcc -o unittest3 unittest3.c -g dominion.o rngs.o $(CFLAGS)
 
-# unittest4: unittest4.c dominion.o rngs.o
-#	gcc -o unittest4 unittest4.c -g dominion.o rngs.o $(CFLAGS)
+unittest4: unittest4.c dominion.o rngs.o
+	gcc -o unittest4 unittest4.c -g dominion.o rngs.o $(CFLAGS)
 
 #cardtest1: cardtest1.c dominion.o rngs.o
 #	gcc -o cardtest1 cardtest1.c -g dominion.o rngs.o $(CFLAGS)
@@ -54,8 +54,11 @@ runtests: testDrawCard
 	cat dominion.c.gcov >> unittestresult.out
 
 # These are the assignment three unit tests!
-rununittests: unittest3
-	./unittest3 &> unittestresults.out
+rununittests: unittest1 unittest2 unittest3 unittest4
+	./unittest1 &> unittestresults.out
+	./unittest2 >> unittestresults.out
+	./unittest3 >> unittestresults.out
+	./unittest4 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 	cat dominion.c.gcov >> unittestresults.out
 

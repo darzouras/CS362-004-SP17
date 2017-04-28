@@ -25,13 +25,12 @@ int main() {
     for (i = 0; i < MAX_HAND; i++) {
         coppers[i] = copper;
         silvers[i] = silver;
-	golds[i] = gold;
+	    golds[i] = gold;
     }
 
-    // FIXME if time, create loop t hrough each possible supplyPos
     // cycle through each player.
     for (p = 0; p < numPlayer; p++) {
-        printf("--- Testing player %d\n", p);
+        printf("\n--- Testing player %d\n", p);
 
         // clear the gameState for each character, then set relevant variables
         memset(&G, 23, sizeof(struct gameState));
@@ -43,10 +42,8 @@ int main() {
 
         // attempt two buys for each player
         G.numBuys = 2;
-	updateCoins(p, &G, 0);
-        printf("G.coins = %d\n", G.coins);
+        updateCoins(p, &G, 0);
 
-        // the first buy attempts to buy a council_room, which will cost all 5 coppers in hand
         printf("--Testing successful buy\n");
         int preSupply = G.supplyCount[1];
         testReturn = buyCard(1, &G);
@@ -83,7 +80,6 @@ int main() {
                 printf("buyCard(): FAIL no card added to hand\n");
         }
 
-        // the second buy attempts to buy a council_room again, but not enough coin in hand
         printf("--Testing unsuccessful buy (not enough coins)\n");
         G.coins = 0;
         testReturn = buyCard(1, &G);
@@ -92,7 +88,7 @@ int main() {
         else
             printf("buyCard(): FAIL unexpected 0 return value\n");
 
-        // another unsuccessful buy- no supply to purchase from
+        printf("--Testing unsuccessful buy (empty supply)\n");
         G.supplyCount[1] = 0;
         G.coins = 5;
         testReturn = buyCard(1, &G);
@@ -101,7 +97,6 @@ int main() {
         else
             printf("buyCard(): FAIL unexpected 0 return value\n");
 
-        // and then test for b = 0
         printf("--Testing unsuccessful buy (no available buy step)\n");
         G.numBuys = 0;
         testReturn = buyCard(1, &G);

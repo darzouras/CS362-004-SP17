@@ -44,7 +44,6 @@ int main() {
         G.handCount[p] = handCount;
         G.discardCount[p] = discardCount;
         G.deckCount[p] = deckCount;
-        memcpy(G.hand[p])
 
         printf("-- Testing Estates: 5 in hand, 10 in discard, 15 in deck\n");
         memcpy(G.hand[p], estates, sizeof(int) * handCount);
@@ -59,8 +58,8 @@ int main() {
 
         printf("-- Testing Duchys: 5 in hand, 10 in discard, 15 in deck\n");
         memcpy(G.hand[p], duchys, sizeof(int) * handCount);
-        memcpy(G.hand[p], duchys, sizeof(int) * discardCount);
-        memcpy(G.hand[p], duchys, sizeof(int) * deckCount);
+        memcpy(G.discard[p], duchys, sizeof(int) * discardCount);
+        memcpy(G.deck[p], duchys, sizeof(int) * deckCount);
 
         testReturn = scoreFor(p, &G);
         if (testReturn == 90)
@@ -70,8 +69,8 @@ int main() {
 
         printf("-- Testing Provinces: 5 in hand, 10 in discard, 15 in deck\n");
         memcpy(G.hand[p], provinces, sizeof(int) * handCount);
-        memcpy(G.hand[p], provinces, sizeof(int) * discardCount);
-        memcpy(G.hand[p], provinces, sizeof(int) * deckCount);
+        memcpy(G.discard[p], provinces, sizeof(int) * discardCount);
+        memcpy(G.deck[p], provinces, sizeof(int) * deckCount);
 
         testReturn = scoreFor(p, &G);
         if (testReturn == 180)
@@ -81,8 +80,8 @@ int main() {
 
         printf("-- Testing Curses: 5 in hand, 10 in discard, 15 in deck\n");
         memcpy(G.hand[p], curses, sizeof(int) * handCount);
-        memcpy(G.hand[p], curses, sizeof(int) * discardCount);
-        memcpy(G.hand[p], curses, sizeof(int) * deckCount);
+        memcpy(G.discard[p], curses, sizeof(int) * discardCount);
+        memcpy(G.deck[p], curses, sizeof(int) * deckCount);
 
         testReturn = scoreFor(p, &G);
         if (testReturn == -30)
@@ -92,8 +91,8 @@ int main() {
 
         printf("-- Testing Great Halls: 5 in hand, 10 in discard, 15 in deck\n");
         memcpy(G.hand[p], great_halls, sizeof(int) * handCount);
-        memcpy(G.hand[p], great_halls, sizeof(int) * discardCount);
-        memcpy(G.hand[p], great_halls, sizeof(int) * deskCount);
+        memcpy(G.discard[p], great_halls, sizeof(int) * discardCount);
+        memcpy(G.deck[p], great_halls, sizeof(int) * deckCount);
 
         testReturn = scoreFor(p, &G);
         if (testReturn == 30)
@@ -103,14 +102,15 @@ int main() {
 
         printf("-- Testing Gardens: 5 in hand, 10 in discard, 15 in deck\n");
         memcpy(G.hand[p], gardenses, sizeof(int) * handCount);
-        memcpy(G.hand[p], gardenses, sizeof(int) * discardCount);
-        memcpy(G.hand[p], gardenses, sizeof(int) * deckCount);
+        memcpy(G.discard[p], gardenses, sizeof(int) * discardCount);
+        memcpy(G.deck[p], gardenses, sizeof(int) * deckCount);
+	
 
         testReturn = scoreFor(p, &G);
-        if (testReturn == 3)
-            printf("scoreFor(): PASS returned score 3\n");
+        if (testReturn == 90)
+            printf("scoreFor(): PASS returned score 90\n");
         else
-            printf("scoreFor(): FAIL returned score %d, expected 3\n", testeReturn);
+            printf("scoreFor(): FAIL returned score %d, expected 90\n", testReturn);
     }
     return 0;
 }

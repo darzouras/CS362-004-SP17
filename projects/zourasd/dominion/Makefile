@@ -18,8 +18,8 @@ badTestDrawCard: badTestDrawCard.c dominion.o rngs.o
 unittest1: unittest1.c dominion.o rngs.o
 	gcc -o unittest1 unittest1.c -g dominion.o rngs.o $(CFLAGS)
 
-# unittest2: unittest2.c dominion.o rngs.o
-#	gcc -o unittest2 unittest2.c -g dominion.o rngs.o $(CFLAGS)
+unittest2: unittest2.c dominion.o rngs.o
+	gcc -o unittest2 unittest2.c -g dominion.o rngs.o $(CFLAGS)
 
 unittest3: unittest3.c dominion.o rngs.o
 	gcc -o unittest3 unittest3.c -g dominion.o rngs.o $(CFLAGS)

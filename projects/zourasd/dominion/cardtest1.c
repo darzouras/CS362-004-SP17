@@ -16,6 +16,7 @@ int main() {
     int i, p, z, cardDrawn;
     int seed = 999;
     int numPlayer = 2;
+    struct gameState G;
     int drawntreasure = 0;
     int tempHand[MAX_HAND];
     int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
@@ -37,7 +38,7 @@ int main() {
 
         // clear gameState, set the hand
         memset(&G, 23, sizeof(struct gameState));
-        intializeGame(numPlayer, k, seed, &G);
+        initializeGame(numPlayer, k, seed, &G);
         G.handCount[p] = handCount;
         memcpy(G.hand[p][0], adventurers, sizeof(int));      // 0st card in hand is adventurer!
         for (i = 1; i < 5; i++)
@@ -47,9 +48,11 @@ int main() {
         for (i = 1; i < 3; i++)
             memcpy(G.deck[p][i], silvers, sizeof(int));      // the cards we are looking for in hand will be silvers
 
+	printf("-- Testing successful return\n");
         assert(playAdventurer(&G, p, drawntreasure, tempHand, z, cardDrawn) == 0);
         printf("playAdventurer(): PASS successful return\n");
 
+	printf("-- Testing that adventurer card is no longer in hand\n");
         int count = 0;
         for (i = 0; i < G.handCount[p]; i++) {
             if (G.hand[p][i] == adventurer)
@@ -60,6 +63,7 @@ int main() {
         else
             printf("playadventurer(): FAIL adventurer card is still in hand\n");
 
+	printf("-- Testing that two silvers have been added to hand\n");
         count = 0;
         for (i = 0; i < G.handCount[p]; i++) {
             if (G.hand[p][i] == silver)

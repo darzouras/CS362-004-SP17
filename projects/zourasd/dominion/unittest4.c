@@ -1,27 +1,63 @@
-// unit testing for the shuffle function (line 201)
+// unit testing the function isGameOver (line 390)
 #include "dominion.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 
-// int shuffle(int player, struct gameState *state)
-// returns 0 when successful
+// int isGameOver(struct gameState *state)
+// returns 0 if the game is not over
+// returns -1 if the game is over:
+// the province supply is empty
+// or three of the supply piles are empty
 int main() {
-    printf("###################\n");
+    printf("\n###################\n");
     printf("Unit test 4 - shuffle()\n");
 
-    // first test situation where state->deckCount[player] is 0
-    // assert that first test is -1
-    // if return is -1, pass
-    // else fail
+    int p, testOver;
+    int seed = 999;
+    int numPlayer = 2;
+    int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
+    struct gameState G;
 
-    // second test situation for a full deck.
-    // save the early gamestate for comparison
-    // assert that this test returns 0
-    // discard pile should now be empty.
-    // compare the old deck positions with new deck positions.
-    // if they are different, pass.
-    // else fail
+    for (p = 0; p < numPlayer; p++) {
+        printf("\n--- Testing player %d\n", p);
 
+        // clear the gameState
+        memset(&G, 23, sizeof(struct gameState));
+        initializeGame(numPlayer, k, seed, &G);
+
+        printf("-- Testing incomplete game\n");
+        testOver = isGameOver(&G);
+        if (testOver == 0)
+            printf("isGameOver(): PASS game will continue\n");
+        else
+            printf("isGameOver(): FAIL game ended incorrectly\n");
+
+        printf("-- Testing empty Province pile\n");
+        G.supplyCount[province] = 0;
+        testOver = isGameOver(&G);
+        if (testOver == 1)
+            printf("isGameOver(): PASS game ended correctly\n");
+        else
+            printf("isGameOver(): FAIL game continues\n");
+
+        printf("-- Testing two empty supply piles\n");
+        G.supplyCount[province] = 1;
+        G.supplyCount[2] = 0;
+        G.supplyCount[6] = 0;
+        testOver = isGameOver(&G);
+        if (testOver == 0)
+            printf("isGameOver(): PASS game will continue\n");
+        else
+            printf("isGameOver(): FAIL game ended incorrectly\n");
+
+        printf("-- Testing three empty supply piles\n");
+        G.supplyCount[4] = 0;
+        testOver = isGameOver(&G);
+        if (testOver == 1)
+            printf("isGameOver(): PASS game ended correctly\n");
+        else
+            printf("isGameOver(): FAIL game continues\n");
+    }
     return 0;
 }

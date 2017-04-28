@@ -1,5 +1,6 @@
 // unit testing for the getCost function (line 583)
 #include "dominion.h"
+#include "dominion_helpers.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -7,7 +8,7 @@
 // getCost takes one parameter: int cardNumber
 // it uses a switch to match the card with its cost, which is returned.
 int main() {
-    printf("####################\n");
+    printf("\n####################\n");
     printf("Unit test 3 - getCost()\n");
     // to test these, we will simply pass any out of the 27 card types
     // and compare the results of the getCost function

@@ -9,7 +9,7 @@
 // int scoreFor (int player, struct gameState *state)
 // returns the point total from a player's hand, deck, and discard pile
 int main() {
-    printf("####################\n");
+    printf("\n####################\n");
     printf("Unit test 2 - scoreFor()\n");
 
     int i, p, r, testReturn;
@@ -104,7 +104,7 @@ int main() {
         memcpy(G.hand[p], gardenses, sizeof(int) * handCount);
         memcpy(G.discard[p], gardenses, sizeof(int) * discardCount);
         memcpy(G.deck[p], gardenses, sizeof(int) * deckCount);
-	
+
 
         testReturn = scoreFor(p, &G);
         if (testReturn == 90)

@@ -10,7 +10,7 @@
 // returns 0 on normal exit if a card was purchased
 // returns -1 if a card could not be purchased
 int main() {
-    printf("####################\n");
+    printf("\n####################\n");
     printf("Unit test 1 - buyCard()\n");
 
     int i, p, r, testReturn;

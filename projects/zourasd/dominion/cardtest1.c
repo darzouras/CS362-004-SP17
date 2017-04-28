@@ -34,27 +34,28 @@ int main() {
     }
 
     for (p = 0; p < numPlayer; p++) {
-        printf("\n-- Testing player %d\n", p);
+        printf("\n--- Testing player %d\n", p);
 
         // clear gameState, set the hand
         memset(&G, 23, sizeof(struct gameState));
         initializeGame(numPlayer, k, seed, &G);
         G.handCount[p] = handCount;
-        memcpy(G.hand[p][0], adventurers, sizeof(int));      // 0st card in hand is adventurer!
+        memcpy(G.hand[p], adventurers, sizeof(int));      // 0st card in hand is adventurer!
         for (i = 1; i < 5; i++)
-            memcpy(G.hand[p][i], coppers, sizeof(int));      // the rest of the cards are coppers
+            memcpy(G.hand[p], coppers, sizeof(int));      // the rest of the cards are coppers
         G.deckCount[p] = deckCount;
-        memcpy(G.deck[p][0], estates, sizeof(int));          // this estate will be drawn but should not remain in hand
+        memcpy(G.deck[p], estates, sizeof(int));          // this estate will be drawn but should not remain in hand
         for (i = 1; i < 3; i++)
-            memcpy(G.deck[p][i], silvers, sizeof(int));      // the cards we are looking for in hand will be silvers
+            memcpy(G.deck[p], silvers, sizeof(int));      // the cards we are looking for in hand will be silvers
 
 	printf("-- Testing successful return\n");
         assert(playAdventurer(&G, p, drawntreasure, tempHand, z, cardDrawn) == 0);
         printf("playAdventurer(): PASS successful return\n");
 
-	printf("-- Testing that adventurer card is no longer in hand\n");
+	printf("these cards are in hand:\n");
         int count = 0;
         for (i = 0; i < G.handCount[p]; i++) {
+	    printf("%d\n", G.hand[p][i]);
             if (G.hand[p][i] == adventurer)
                 count++;
         }
@@ -63,7 +64,6 @@ int main() {
         else
             printf("playadventurer(): FAIL adventurer card is still in hand\n");
 
-	printf("-- Testing that two silvers have been added to hand\n");
         count = 0;
         for (i = 0; i < G.handCount[p]; i++) {
             if (G.hand[p][i] == silver)

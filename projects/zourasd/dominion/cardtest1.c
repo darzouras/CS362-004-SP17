@@ -21,6 +21,16 @@ int main() {
     int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
     int handCount = 5;
     int deckCount = 3;
+    int coppers[MAX_HAND];
+    int silvers[MAX_HAND];
+    int estates[MAX_HAND];
+    int adventurers[MAX_HAND];
+    for (i = 0; i < MAX_HAND; i++) {
+        coppers[i] = copper;
+        silvers[i] = silver;
+        estates[i] = estate;
+        adventurers[i] = adventurer;
+    }
 
     for (p = 0; p < numPlayer; p++) {
         printf("\n-- Testing player %d\n", p);
@@ -29,13 +39,13 @@ int main() {
         memset(&G, 23, sizeof(struct gameState));
         intializeGame(numPlayer, k, seed, &G);
         G.handCount[p] = handCount;
-        memcpy(G.hand[p][0], adventurer, sizeof(int));      // 0st card in hand is adventurer!
+        memcpy(G.hand[p][0], adventurers, sizeof(int));      // 0st card in hand is adventurer!
         for (i = 1; i < 5; i++)
-            memcpy(G.hand[p][i], copper, sizeof(int));      // the rest of the cards are coppers
+            memcpy(G.hand[p][i], coppers, sizeof(int));      // the rest of the cards are coppers
         G.deckCount[p] = deckCount;
-        memcpy(G.deck[p][0], estate, sizeof(int));          // this estate will be drawn but should not remain in hand
+        memcpy(G.deck[p][0], estates, sizeof(int));          // this estate will be drawn but should not remain in hand
         for (i = 1; i < 3; i++)
-            memcpy(G.deck[p][i], silver, sizeof(int));      // the cards we are looking for in hand will be silvers
+            memcpy(G.deck[p][i], silvers, sizeof(int));      // the cards we are looking for in hand will be silvers
 
         assert(playAdventurer(&G, p, drawntreasure, tempHand, z, cardDrawn) == 0);
         printf("playAdventurer(): PASS successful return\n");

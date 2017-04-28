@@ -13,13 +13,11 @@ int main() {
     printf("Card test (unit test) - Adventurer\n");
 
     // set function parameters
-    struct gameState* state = malloc(sizeof(struct gameState));
     int i, p, z, cardDrawn;
     int seed = 999;
     int numPlayer = 2;
-    int currentPlayer = 0;
     int drawntreasure = 0;
-    int temphand[MAX_HAND];
+    int tempHand[MAX_HAND];
     int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
     int handCount = 5;
     int deckCount = 3;
@@ -39,7 +37,7 @@ int main() {
         for (i = 1; i < 3; i++)
             memcpy(G.deck[p][i], silver, sizeof(int));      // the cards we are looking for in hand will be silvers
 
-        assert(playAdventurer(&G, p, drawntreasure, &tempHand, z, cardDrawn) == 0);
+        assert(playAdventurer(&G, p, drawntreasure, tempHand, z, cardDrawn) == 0);
         printf("playAdventurer(): PASS successful return\n");
 
         int count = 0;

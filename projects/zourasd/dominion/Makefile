@@ -36,8 +36,8 @@ cardtest2: cardtest2.c dominion.o rngs.o
 cardtest3: cardtest3.c dominion.o rngs.o
 	gcc -o cardtest3 cardtest3.c -g dominion.o rngs.o $(CFLAGS)
 
-# cardtest4: cardtest4.c dominion.o rngs.o
-#	gcc -o cardtest4 cardtest4.c -g dominion.o rngs.o $(CFLAGS)
+cardtest4: cardtest4.c dominion.o rngs.o
+	gcc -o cardtest4 cardtest4.c -g dominion.o rngs.o $(CFLAGS)
 
 testBuyCard: testDrawCard.c dominion.o rngs.o
 	gcc -o testDrawCard -g  testDrawCard.c dominion.o rngs.o $(CFLAGS)
@@ -61,6 +61,8 @@ rununittests: unittest1 unittest2 unittest3 unittest4
 	./unittest4 >> unittestresults.out
 	./cardtest1 >> unittestresults.out
 	./cardtest2 >> unittestresults.out
+	./cardtest3 >> unittestresults.out
+	./cardtest4 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 	cat dominion.c.gcov >> unittestresults.out
 

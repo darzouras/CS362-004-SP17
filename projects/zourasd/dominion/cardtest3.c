@@ -50,7 +50,7 @@ int main() {
 
         printf("-- Testing hand count\n");
         if (G.handCount[p] == 1)
-            printf("playVillage(): PASS hand holds only 1 card");
+            printf("playVillage(): PASS hand holds only 1 card\n");
         else
             printf("playVillage(): FAIL hand holds %d cards, expected 1\n", G.handCount[p]);
 

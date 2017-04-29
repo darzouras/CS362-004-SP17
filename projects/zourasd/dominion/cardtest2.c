@@ -40,8 +40,12 @@ int main() {
         memcpy(G.deck[p], coppers, sizeof(int) * deckCount);
 
         printf("-- Testing successful return\n");
-        assert(playSmithy(&G, 0, p));
-        printf("playSmith(): PASS successful return\n");
+	int testSmithy;
+	testSmithy = playSmithy(&G, 0, p);
+	if (testSmithy == 0)
+            printf("playSmithy(): PASS successful return\n");
+	else
+	    printf("playSmithy(): FAIL unsuccessful return\n");
 
         printf("-- Testing hand count\n");
         if (G.handCount[p] == 3)

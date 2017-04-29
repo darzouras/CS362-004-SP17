@@ -34,18 +34,19 @@ int main() {
         memset(&G, 23, sizeof(struct gameState));
         initializeGame(numPlayer, k, seed, &G);
         G.handCount[p]  = handCount;
+        G.deckCount[p] = deckCount;
         // There is a single Smithy in hand,
         // and three Coppers in deck available to draw
         memcpy(G.hand[p], smithys, sizeof(int) * handCount);
         memcpy(G.deck[p], coppers, sizeof(int) * deckCount);
 
         printf("-- Testing successful return\n");
-	int testSmithy;
-	testSmithy = playSmithy(&G, 0, p);
-	if (testSmithy == 0)
+    	int testSmithy;
+    	testSmithy = playSmithy(&G, 0, p);
+    	if (testSmithy == 0)
             printf("playSmithy(): PASS successful return\n");
-	else
-	    printf("playSmithy(): FAIL unsuccessful return\n");
+    	else
+    	    printf("playSmithy(): FAIL unsuccessful return\n");
 
         printf("-- Testing hand count\n");
         if (G.handCount[p] == 3)
@@ -55,12 +56,15 @@ int main() {
 
         printf("-- Testing discard\n");
         if (G.handCount[p] > 0) {
+            int count = 0;
             for (i = 0; i < G.handCount[p]; i++) {
                 if (G.hand[p][i] == smithy)
-                    printf("playSmithy(): FAIL smithy card has not been discarded\n");
-                else
-                    printf("playSmithy(): PASS smithy card has been discarded\n");
+                    count++;
             }
+            if (count != 0)
+                printf("playSmithy(): FAIL smithy card has not been discarded\n");
+            else
+                printf("playSmithy(): PASS smithy card has been discarded\n");
         }
         else
             printf("playSmithy(): PASS smithy card has been discarded\n");

@@ -24,7 +24,7 @@ int main() {
     int villages[MAX_HAND];
     for (i = 0; i < MAX_HAND; i++) {
         coppers[i] = copper;
-        vilages[i] = village;
+        villages[i] = village;
     }
 
     // cycle through each player
@@ -73,7 +73,7 @@ int main() {
         if (G.numActions >= 2)
             printf("playVillage(): PASS 2 more actions have been made available\n");
         else
-            printf("playVillage(): FAIL %d actions are left, expected at least 2\n");
+            printf("playVillage(): FAIL %d actions are left, expected at least 2\n", G.numActions);
     }
 
     return 0;

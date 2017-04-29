@@ -37,7 +37,7 @@ int main() {
         r = initializeGame(numPlayer, k, seed, &G);
         G.handCount[p] = handCount;
         memcpy(G.hand[p], coppers, sizeof(int) * handCount);
-        G.whoseTurn = p; // FIXME do I need this?????
+        // G.whoseTurn = p; // FIXME do I need this?????
         // there are 5 coppers in hand to start
 
         // attempt two buys for each player

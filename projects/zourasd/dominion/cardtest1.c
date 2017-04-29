@@ -22,12 +22,10 @@ int main() {
     int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
     int handCount = 5;
     int deckCount = 3;
-    int coppers[MAX_HAND];
     int silvers[MAX_HAND];
     int estates[MAX_HAND];
     int adventurers[MAX_HAND];
     for (i = 0; i < MAX_HAND; i++) {
-        coppers[i] = copper;
         silvers[i] = silver;
         estates[i] = estate;
         adventurers[i] = adventurer;
@@ -40,9 +38,7 @@ int main() {
         memset(&G, 23, sizeof(struct gameState));
         initializeGame(numPlayer, k, seed, &G);
         G.handCount[p] = handCount;
-        memcpy(G.hand[p], adventurers, sizeof(int));      // 0st card in hand is adventurer!
-        for (i = 1; i < 5; i++)
-            memcpy(G.hand[p], coppers, sizeof(int));      // the rest of the cards are coppers
+        memcpy(G.hand[p], adventurers, sizeof(int) * handCount);    // all cards in hand are adventurers, can be counted later
         G.deckCount[p] = deckCount;
         memcpy(G.deck[p], estates, sizeof(int));          // this estate will be drawn but should not remain in hand
         for (i = 1; i < 3; i++)
@@ -52,14 +48,14 @@ int main() {
         assert(playAdventurer(&G, p, drawntreasure, tempHand, z, cardDrawn) == 0);
         printf("playAdventurer(): PASS successful return\n");
 
-	printf("these cards are in hand:\n");
+	printf("These cards are in hand:\n");
         int count = 0;
         for (i = 0; i < G.handCount[p]; i++) {
 	    printf("%d\n", G.hand[p][i]);
             if (G.hand[p][i] == adventurer)
                 count++;
         }
-        if (count == 0)
+        if (count == 4)
             printf("playAdventurer(): PASS adventurer discarded from hand\n");
         else
             printf("playadventurer(): FAIL adventurer card is still in hand\n");

@@ -54,7 +54,7 @@ runtests: testDrawCard
 	cat dominion.c.gcov >> unittestresult.out
 
 # These are the assignment three unit tests!
-rununittests: unittest1 unittest2 unittest3 unittest4
+unittestresults.out: unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
 	./unittest1 &> unittestresults.out
 	./unittest2 >> unittestresults.out
 	./unittest3 >> unittestresults.out

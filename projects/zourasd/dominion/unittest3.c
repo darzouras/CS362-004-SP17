@@ -110,7 +110,6 @@ int main() {
 
     if (getCost(great_hall) == 3)
         printf("getCost(): PASS cost of Great Hall is correct\n");
-    if (getCost())
 
     // if time to do it, add tests for each card.
 

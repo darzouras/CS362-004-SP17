@@ -13,7 +13,7 @@
 // or three of the supply piles are empty
 int main() {
     printf("\n###################\n");
-    printf("Unit test 4 - shuffle()\n");
+    printf("Unit test 4 - isGameOver()\n");
 
     int p, testOver;
     int seed = 999;

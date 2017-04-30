@@ -27,90 +27,32 @@ int main() {
         printf("getCost(): FAIL bad card name returned %d, expected -1\n", getCost(-1));
 
     checkCost("Curse", curse, 0);
-
-    /* if (getCost(curse) == 0)
-        printf("getCost(): PASS cost of Curse is correct\n");
-    else
-        printf("getCost(): FAIL cost of Curse returned %d, expected 0\n", getCost(curse)); */
-
-    if (getCost(estate) == 2)
-        printf("getCost(): PASS cost of Estate is correct\n");
-    else
-        printf("getCost(): FAIL cost of Estate returned %d, expected 2\n", getCost(estate));
-
-    if (getCost(duchy) == 5)
-        printf("getCost(): PASS cost of Dutchy is correct\n");
-    else
-        printf("getCost(): FAIL cost of Dutchy returned %d, expected 5\n", getCost(duchy));
-
-    if (getCost(province) == 8)
-        printf("getCost(): PASS cost of Province is correct\n");
-    else
-        printf("getCost(): FAIL cost of Province returned %d, expected 8\n", getCost(province));
-
-    if (getCost(copper) == 0)
-        printf("getCost(): PASS cost of Copper is correct\n");
-    else
-        printf("getCost(): FAIL cost of Copper returned %d, expected 0\n", getCost(copper));
-
-    if (getCost(silver) == 3)
-        printf("getCost(): PASS cost of Silver is correct\n");
-    else
-        printf("getCost(): FAIL cost of Silver returned %d, expected 3\n", getCost(silver));
-
-    if (getCost(gold) == 6)
-        printf("getCost(): PASS cost of Gold is correct\n");
-    else
-        printf("getCost(): FAIL cost of Gold returned %d, expected 6\n", getCost(gold));
-
-    if (getCost(adventurer) == 6)
-        printf("getCost(): PASS cost of Adventurer is correct\n");
-    else
-        printf("getCost(): FAIL cost of Adventurer returned %d, expected 6\n", getCost(adventurer));
-
-    if (getCost(council_room) == 5)
-        printf("getCost(): PASS cost of Council Room is correct\n");
-    else
-        printf("getCost(): FAIL cost of Council Room returned %d, expected 5\n", getCost(council_room));
-
-    if (getCost(feast) == 4)
-        printf("getCost(): PASS cost of Feast is correct\n");
-    else
-        printf("getCost(): FAIL cost of Feast returned %d, expected 4\n", getCost(feast));
-
-    if (getCost(gardens) == 4)
-        printf("getCost(): PASS cost of Gardens is correct\n");
-    else
-        printf("getCost(): FAIL cost of Gardens returned %d, expected 4\n", getCost(gardens));
-
-    if (getCost(mine) == 5)
-        printf("getCost(): PASS cost of Mine is correct\n");
-    else
-        printf("getCost(): FAIL cost of Mine returned %d, expected 5\n", getCost(mine));
-
-    if (getCost(remodel) == 4)
-        printf("getCost(): PASS cost of Remodel is correct\n");
-    else
-        printf("getCost(): FAIL cost of Remodel returned %d, expected 4\n", getCost(remodel));
-
-    if (getCost(smithy) == 4)
-        printf("getCost(): PASS cost of Smithy is correct\n");
-    else
-        printf("getCost(): FAIL cost of Smithy returned %d, expected 4\n", getCost(smithy));
-
-    if (getCost(village) == 3)
-        printf("getCost(): PASS cost of Village is correct\n");
-    else
-        printf("getCost(): FAIL cost of Village returned %d, expected 3\n", getCost(village));
-
-    if (getCost(baron) == 4)
-        printf("getCost(): PASS cost of Baron is correct\n");
-    else
-        printf("getCost(): FAIL cost of Barn returned %d, expected 4\n", getCost(baron));
-
-    if (getCost(great_hall) == 3)
-        printf("getCost(): PASS cost of Great Hall is correct\n");
-    if (getCost())
+    checkCost("Estate", estate, 2);
+    checkCost("Duchy", duchy, 5);
+    checkCost("Province", province, 8);
+    checkCost("Copper", copper, 0);
+    checkCost("Silver", silver, 3);
+    checkCost("Gold", gold, 6);
+    checkCost("Adventurer", adventurer, 6);
+    checkCost("Council Room", council_room, 5);
+    checkCost("Feast", feast, 4);
+    checkCost("Gardens", gardens, 4);
+    checkCost("Mine", mine, 5);
+    checkCost("Remodel", remodel, 4);
+    checkCost("Smithy", smithy, 4);
+    checkCost("Village", village, 3);
+    checkCost("Baron", baron, 4);
+    checkCost("Great Hall", great_hall, 3);
+    checkCost("Minion", minion, 5);
+    checkCost("Steward", steward, 3);
+    checkCost("Tribute", tribute, 5);
+    checkCost("Ambassador", ambassador, 3);
+    checkCost("Cutpurse", cutpurse, 4);
+    checkCost("Embargo", embargo, 2);
+    checkCost("Outpost", outpost, 5);
+    checkCost("Salvager", salvager, 4);
+    checkCost("Sea Hag", sea_hag, 4);
+    checkCost("Treasure Map", treasure_map, 4);
 
     // if time to do it, add tests for each card.
 

@@ -33,7 +33,7 @@ int main() {
         for (handCount = 1; handCount < MAX_HAND; handCount++) {
             // also for multiple deck counts
             for (deckCount = 1; deckCount < MAX_DECK; deckCount++) {
-                // and multiple players 
+                // and multiple players
                 for (p = 0; p < MAX_PLAYERS; p++) {
                     printf("\n--- Testing player %d\n", p);
 
@@ -44,7 +44,13 @@ int main() {
                     memset(&G, 23, sizeof(struct gameState));
                     intiializeGame(numPlayer, k, n, &G);
 
-
+                    // FIXME this is a little broken,
+                    // post should probably be pre???
+                    for (i = 0; i < post->handCount[p]; i++) {
+                        post->hand[p][h] = (int)floor(Random() * 26);
+                    }
+                    // but this ^^^ makes sure this is filled with valid cards
+                    // TODO this also needs to be done for the deck!!
                 }
             }
         }

@@ -76,10 +76,10 @@ rununittests: unittest1 unittest2 unittest3 unittest4
 	cat dominion.c.gcov >> unittestresults.out
 
 runrandomtests: randomtestcard1 randomtestcard2 randomtestadventurer
-	./randomtestcard1 &> randomtestresults.out
-	./randomtestcard2 >> randomtestresults.out
-	./randomtestadventurer >> randomtestresults.out
-	gcov dominion.c >> randomtestresults.out
+	./randomtestcard1 &> randomtestcard1.out
+	./randomtestcard2 &> randomtestcard2.out
+	./randomtestadventurer &> randomtestadventurer.out
+	gcov dominion.c &> randomtestresults.out
 	cat dominion.c.gcov >> randomtestresults.out
 
 player: player.c interface.o

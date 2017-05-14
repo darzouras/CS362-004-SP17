@@ -16,7 +16,7 @@ int main() {
 
     // set function parameters
     int i, n, p, cardDrawn, numPlayer, drawntreasure, count, badcount, index;
-    struct gameState G, pre; 
+    struct gameState G, pre;
     int tempHand[MAX_HAND];
     int z = 0;
     int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
@@ -27,25 +27,25 @@ int main() {
         count = 0;
         badcount = 0;
 
-        // clear gameState, set the hand
+        // clear gameState, set the hand, deck, and discard
         memset(&G, 23, sizeof(struct gameState));
         initializeGame(numPlayer, k, n, &G);
         p = floor(Random() * 2);
         G.deckCount[p] = floor(Random() * MAX_DECK);
         G.discardCount[p] = floor(Random() * MAX_DECK);
         G.handCount[p] = floor(Random() * MAX_HAND);
-	for (i = 0; i < G.handCount[p]; i++) {
-		G.hand[p][i] = floor(Random() * 26);
-	}
-	for (i = 0; i < G.deckCount[p]; i++) {
-		G.deck[p][i] = floor(Random() * 26);
-	}
-	for (i = 0; i < G.discardCount[p]; i++) {
-		G.discard[p][i] = floor(Random() * 26);
-	}
+    	for (i = 0; i < G.handCount[p]; i++) {
+    		G.hand[p][i] = floor(Random() * 26);
+    	}
+    	for (i = 0; i < G.deckCount[p]; i++) {
+    		G.deck[p][i] = floor(Random() * 26);
+    	}
+    	for (i = 0; i < G.discardCount[p]; i++) {
+    		G.discard[p][i] = floor(Random() * 26);
+    	}
         index = floor(Random() * G.handCount[p]);
         pre = G;
-        printf("-- Seed[%d] -- Handsize[%d] -- Decksize[%d]\n", n, *G.handCount, *G.deckCount);
+        printf("-- Seed[%d] -- Handsize[%d] -- Decksize[%d]\n", n, G.handCount[p], G.deckCount[p]);
 
         // check for correct return value
         if (playAdventurer(&G, p, drawntreasure, tempHand, z, cardDrawn) == 0) {

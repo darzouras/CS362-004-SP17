@@ -5,6 +5,18 @@
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
+#include <stdlib.h>
+#include <math.h>
+
+// this function compares values
+// returns 0 if values are equal,
+// returns 1 if values are inequal
+int testvals(int * v1, int* v2, int size) {
+    if (memcmp(v1, v2, size) == 0)
+        return 0;
+    else {
+        return 1;
+}
 
 // int playAdventurer (struct gameState *state, int currentPlayer, int drawntreasure, int* temphand, int z, int cardDrawn)
 // returns 0 for a successful return
@@ -13,9 +25,10 @@ int main() {
     printf("Card test (random test) - Adventurer\n");
 
     // set function parameters
-    int i, n, p, z, cardDrawn, numPlayer, drawntreasure, count, badcount, seed;
-    struct gameState G;
+    int n, p, cardDrawn, numPlayer, drawntreasure, count, badcount, seed, index;
+    struct gameState G, pre, post;
     int tempHand[MAX_HAND];
+    int z = 0;
     int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
     int handCount, deckCount;
     int silvers[MAX_HAND];
@@ -28,32 +41,59 @@ int main() {
     }
 
     // test multiple players with multiple seeds
+    // n will serve as the seed to randomize each iteration
     for (n = 0; n < 10; n++) {
-        // testing for multiple hand counts
-        for (handCount = 1; handCount < MAX_HAND; handCount++) {
-            // also for multiple deck counts
-            for (deckCount = 1; deckCount < MAX_DECK; deckCount++) {
-                // and multiple players
-                for (p = 0; p < MAX_PLAYERS; p++) {
-                    printf("\n--- Testing player %d\n", p);
+        // these counters are saved
+        count = 0;
+        badcount = 0;
 
-                    count = 0;
-                    badcount = 0;
-                    for (i = 0; i = )
-                    // clear gameState, set the hand
-                    memset(&G, 23, sizeof(struct gameState));
-                    intiializeGame(numPlayer, k, n, &G);
+        // clear gameState, set the hand
+        memset(&G, 23, sizeof(struct gameState));
+        intiializeGame(numPlayer, k, n, &G);
+        p = floor(Random() * 2);
+        G.deckCount[p] = floor(Random() * MAX_DECK);
+        G.discardCount[p] = floor(Random() * MAX_DECK);
+        G.handCount[p] = floor(Random() * MAX_DECK);
+        index = floor(Random() * G.handCount[p]);
+        pre = G;
+        printf("-- Seed[%d] -- Handsize[%d] -- Decksize[%d]\n", n, G.handCount, G.deckCounts);
 
-                    // FIXME this is a little broken,
-                    // post should probably be pre???
-                    for (i = 0; i < post->handCount[p]; i++) {
-                        post->hand[p][h] = (int)floor(Random() * 26);
-                    }
-                    // but this ^^^ makes sure this is filled with valid cards
-                    // TODO this also needs to be done for the deck!!
-                }
+        // check for correct return value
+        if (playAdventurer(&G, p, drawntreasure, tempHand, z, cardDrawn) == 0) {
+            printf("PASS successful return\n");
+            count++;
+        }
+        else {
+            printf("FAIL unsuccessful return\n");
+            badcount++;
+        }
+
+        if (testVals((int*)G.hand[p][index], (int*)pre.hand[p][index], sizeof(int)) == 0) {
+            printf("FAIL have not discarded card\n");
+            badcount++;
+            if (G.handCount[p == pre.handCount[p] + 2) {
+                printf("PASS added two new cards in hand\n");
+                count++;
+            }
+            else {
+                printf("FAIL expected two new cards in hand\n");
+                count++;
             }
         }
+        else {
+            printf("PASS successful discard\n");
+            count++;
+            if (G.handCount[p] == pre.handCount[p] + 1) {
+                printf("PASS added two new cards in hand\n");
+                count++;
+            }
+            else {
+                printf("FAIL expected two new cards in hand\n");
+                badcount++;
+            }
+        }
+
+        printf("#TESTS PASSED: %d, TESTS FAILED: %d\n", count, badcount);
     }
 
 }

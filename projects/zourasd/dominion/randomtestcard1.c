@@ -15,7 +15,7 @@ int main() {
     printf("\n####################\n");
     printf("Card test (random test) - Smithy\n");
 
-    int i, p, n, numPlayer;
+    int i, p, n, numPlayer, count, badcount, index;
     int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
     struct gameState G, pre;
 

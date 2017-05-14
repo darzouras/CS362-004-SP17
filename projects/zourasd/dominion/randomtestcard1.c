@@ -76,5 +76,9 @@ int main() {
                 badcount++;
             }
         }
+
+        printf("#TESTS PASSED: %d, TESTS FAILED: %d\n", count, badcount);
     }
+
+    return 0;
 }

@@ -3,7 +3,7 @@
 #include "dominion_helpers.h"
 #include "rngs.h"
 #include <string.h>
-#include <studio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -18,13 +18,13 @@ int main() {
     int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
     struct gameState G, pre;
 
-    for (n = 1; n < 10; n++) {
+    for (n = 1; n < 1000; n++) {
         count = 0;
         badcount = 0;
 
         // clear gamestate, set hand, deck, and discard
         memset(&G, 23, sizeof(struct gameState));
-        initializeGame(numPlayer, k, n, &G);
+        initializeGame(MAX_PLAYERS, k, n, &G);
         p = floor(Random() * 2);
         G.deckCount[p] = floor(Random() * MAX_DECK);
         G.discardCount[p] = floor(Random() * MAX_DECK);
@@ -43,45 +43,45 @@ int main() {
         printf("-- Seed[%d] -- Handsize[%d] -- Decksize[%d]\n", n, G.handCount[p], G.deckCount[p]);
 
         if (playVillage(&G, index, p) == 0) {
-            printf("PASS successful return\n");
+            // printf("PASS successful return\n");
             count++;
         }
         else {
-            printf("FAIL unsuccessful return\n");
+            // printf("FAIL unsuccessful return\n");
             badcount++;
         }
 
         if (G.hand[p][index] == pre.hand[p][index]) {
-            printf("FAIL have not discarded card\n");
+            // printf("FAIL have not discarded card\n");
             badcount++;
             if (G.handCount[p] = pre.handCount[p] + 1) {
-                printf("PASS new card in hand\n");
+                // printf("PASS new card in hand\n");
                 count++;
             }
             else {
-                printf("FAIL expected new card in hand\n");
+                // printf("FAIL expected new card in hand\n");
                 badcount++;
             }
         }
         else {
-            printf("PASS successful discard\n");
+            // printf("PASS successful discard\n");
             count++;
             if (G.handCount[p] == pre.handCount[p]) {
-                printf("PASS added new card to hand\n");
+                // printf("PASS added new card to hand\n");
                 count++;
             }
             else {
-                printf("FAIL expected new card in hand\n");
+                // printf("FAIL expected new card in hand\n");
                 badcount++;
             }
         }
 
         if (G.numActions == pre.numActions + 2) {
-            printf("PASS two actions added\n");
+            // printf("PASS two actions added\n");
             count++;
         }
         else {
-            printf("FAIL expected two extra actions\n");
+            // printf("FAIL expected two extra actions\n");
             badcount++;
         }
 

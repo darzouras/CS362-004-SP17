@@ -15,17 +15,17 @@ int main() {
     printf("\n####################\n");
     printf("Card test (random test) - Smithy\n");
 
-    int i, p, n, numPlayer, count, badcount, index;
+    int i, p, n, count, badcount, index;
     int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
     struct gameState G, pre;
 
-    for (n = 1; n < 10; n++) {
+    for (n = 2; n < 1000; n++) {
         count = 0;
         badcount = 0;
 
         // clear gameState, set hand, deck, and discard
         memset(&G, 23, sizeof(struct gameState));
-        initializeGame(numPlayer, k, n, &G);
+        initializeGame(MAX_PLAYERS, k, n, &G);
         p = floor(Random() * 2);
         G.deckCount[p] = floor(Random() * MAX_DECK);
         G.discardCount[p] = floor(Random() * MAX_DECK);
@@ -44,35 +44,35 @@ int main() {
         printf("-- Seed[%d] -- Handsize[%d] -- Decksize[%d]\n", n, G.handCount[p], G.deckCount[p]);
 
         if (playSmithy(&G, index, p) == 0) {
-            printf("PASS successful return\n");
+            // printf("PASS successful return\n");
             count++;
         }
         else {
-            printf("FAIL unsuccessful return\n");
+            // printf("FAIL unsuccessful return\n");
             badcount++;
         }
 
         if (G.hand[p][index] == pre.hand[p][index]) {
-            printf("FAIL smithy card has not been discarded\n");
+            // printf("FAIL smithy card has not been discarded\n");
             badcount++;
             if (G.handCount[p] == pre.handCount[p] + 3) {
-                printf("PASS added three new cards to hand\n");
+                // printf("PASS added three new cards to hand\n");
                 count++;
             }
             else {
-                printf("FAIL expected three new cards in hand\n");
+                // printf("FAIL expected three new cards in hand\n");
                 badcount++;
             }
         }
         else {
-            printf("PASS smithy card has been discarded\n");
+            // printf("PASS smithy card has been discarded\n");
             count++;
             if (G.handCount[p] == pre.handCount[p] + 2) {
-                printf("PASS added three new cards to hand\n");
+                // printf("PASS added three new cards to hand\n");
                 count++;
             }
             else {
-                printf("FAIL expected three new cards in hand\n");
+                // printf("FAIL expected three new cards in hand\n");
                 badcount++;
             }
         }

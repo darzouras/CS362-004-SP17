@@ -29,7 +29,7 @@ int main() {
 
         // clear gameState, set the hand, deck, and discard
         memset(&G, 23, sizeof(struct gameState));
-        initializeGame(numPlayer, k, n, &G);
+        initializeGame(MAX_PLAYERS, k, n, &G);
         p = floor(Random() * 2);
         G.deckCount[p] = floor(Random() * MAX_DECK);
         G.discardCount[p] = floor(Random() * MAX_DECK);
